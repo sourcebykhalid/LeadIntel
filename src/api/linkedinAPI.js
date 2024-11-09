@@ -1,7 +1,8 @@
 import axios from "axios";
 
-// Get the base URL from the environment variable
-const BASE_URL = import.meta.env.REACT_APP_API_BASE_URL;
+// Get the base URL from the environment variable or fallback to localhost
+const BASE_URL =
+  import.meta.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
 const getCompanyData = async (domain) => {
   try {
