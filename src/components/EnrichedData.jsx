@@ -9,33 +9,33 @@ function EnrichedData({ data }) {
   }
 
   const {
-    name,
-    linkedinUrl,
+    company_name,
+    linkedin_url,
     description,
-    images,
-    staffCount,
+    logo_url,
+    employee_count,
     industries,
-    specialities,
+    specialties,
     website,
-    followerCount,
-    fundingData,
+    follower_count,
+    funding_info,
   } = data.data; // Safely destructuring assuming data.data holds the company info
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold text-blue-700 mb-4">{name}</h2>
+      <h2 className="text-3xl font-bold text-blue-700 mb-4">{company_name}</h2>
 
       <div className="grid gap-8 md:grid-cols-2">
         {/* Company Overview */}
         <div className="bg-white rounded-lg shadow p-6">
           <img
-            src={images?.logo}
+            src={logo_url}
             alt={`${name} logo`}
             className="h-24 w-24 rounded-full mx-auto mb-4"
           />
           <p className="text-gray-700">{description}</p>
           <a
-            href={linkedinUrl}
+            href={linkedin_url}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 mt-2 inline-block hover:underline"
@@ -48,7 +48,7 @@ function EnrichedData({ data }) {
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-xl font-semibold mb-2">Company Details</h3>
           <p>
-            <span className="font-medium">Staff Count:</span> {staffCount}
+            <span className="font-medium">Staff Count:</span> {employee_count}
           </p>
         </div>
       </div>
@@ -56,15 +56,8 @@ function EnrichedData({ data }) {
       {/* Specialities */}
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-2">Specialities</h3>
-        <div className="flex flex-wrap gap-2">
-          {specialities?.map((speciality, index) => (
-            <span
-              key={index}
-              className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm"
-            >
-              {speciality}
-            </span>
-          ))}
+        <div className="flex flex-wrap gap-2 bg-neutral-300 px-3 py-2 rounded-sm border-b-2 border-neutral-600  font-bold">
+          {specialties}
         </div>
       </div>
 
@@ -90,7 +83,7 @@ function EnrichedData({ data }) {
           {website}
         </a>
         <p className="text-gray-700 mt-2">
-          <span className="font-medium">Followers:</span> {followerCount}
+          <span className="font-medium">Followers:</span> {follower_count}
         </p>
       </div>
 
@@ -99,17 +92,17 @@ function EnrichedData({ data }) {
         <h3 className="text-xl font-semibold mb-2">Funding Information</h3>
         <p>
           <span className="font-medium">Rounds:</span>{" "}
-          {fundingData?.numFundingRounds}
+          {funding_info?.num_funding_rounds}
         </p>
-        {fundingData?.lastFundingRound && (
+        {funding_info?.last_funding_round_amount && (
           <>
             <p>
               <span className="font-medium">Last Round:</span>{" "}
-              {fundingData.lastFundingRound.fundingType}
+              {funding_info.last_funding_round_amount}
             </p>
             <p>
               <span className="font-medium">Announced On:</span>{" "}
-              {`${fundingData.lastFundingRound.announcedOn.month}-${fundingData.lastFundingRound.announcedOn.day}-${fundingData.lastFundingRound.announcedOn.year}`}
+              {`${funding_info.last_funding_round_month}-${funding_info.last_funding_round_year}`}
             </p>
           </>
         )}

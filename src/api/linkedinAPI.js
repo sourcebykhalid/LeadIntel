@@ -3,11 +3,11 @@ import axios from "axios";
 // Get the base URL from the environment variable or fallback to localhost
 const BASE_URL = "https://leadintel-server-sdk9.onrender.com";
 
-console.log(BASE_URL, "Baseurl");
 const getCompanyData = async (domain) => {
   try {
     const response = await axios.get(`${BASE_URL}/api/company-data`, {
       params: { domain },
+      withCredentials: true,
     });
     return response.data;
   } catch (error) {
