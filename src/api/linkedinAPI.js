@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Get the base URL from the environment variable or fallback to localhost
 const BASE_URL =
-  "https://teamintelbackend.vercel.app/" || "http://localhost:5000";
+  "http://localhost:5000" || "https://backend-rouge-chi-65.vercel.app/";
 console.log(BASE_URL, "Baseurl");
 const getCompanyData = async (domain) => {
   try {
