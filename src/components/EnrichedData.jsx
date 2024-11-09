@@ -1,7 +1,12 @@
 import React from "react";
 
 function EnrichedData({ data }) {
-  if (!data) return null;
+  // Check if data or data.data is null/undefined before destructuring
+  if (!data || !data.data) {
+    return (
+      <div className="text-center text-xl text-gray-500">No data available</div>
+    ); // Loading or error message
+  }
 
   const {
     name,
@@ -10,7 +15,6 @@ function EnrichedData({ data }) {
     description,
     type,
     images,
-    logos,
     staffCount,
     headquarter,
     industries,
@@ -19,7 +23,7 @@ function EnrichedData({ data }) {
     founded,
     followerCount,
     fundingData,
-  } = data.data; // assuming `data.data` holds the actual company info
+  } = data.data; // safely destructuring assuming data.data holds the company info
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
@@ -68,7 +72,7 @@ function EnrichedData({ data }) {
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-2">Specialities</h3>
         <div className="flex flex-wrap gap-2">
-          {specialities.map((speciality, index) => (
+          {specialities?.map((speciality, index) => (
             <span
               key={index}
               className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm"
@@ -83,7 +87,7 @@ function EnrichedData({ data }) {
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-2">Cover Images</h3>
         <div className="flex overflow-x-scroll space-x-4">
-          {data.data.backgroundCoverImages.map((image, index) => (
+          {data.data.backgroundCoverImages?.map((image, index) => (
             <img
               key={index}
               src={image.url}
@@ -98,7 +102,7 @@ function EnrichedData({ data }) {
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-2">Industries</h3>
         <ul className="list-disc list-inside text-gray-700">
-          {industries.map((industry, index) => (
+          {industries?.map((industry, index) => (
             <li key={index}>{industry}</li>
           ))}
         </ul>
