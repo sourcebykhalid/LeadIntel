@@ -10,20 +10,16 @@ function EnrichedData({ data }) {
 
   const {
     name,
-    universalName,
     linkedinUrl,
     description,
-    type,
     images,
     staffCount,
-    headquarter,
     industries,
     specialities,
     website,
-    founded,
     followerCount,
     fundingData,
-  } = data.data; // safely destructuring assuming data.data holds the company info
+  } = data.data; // Safely destructuring assuming data.data holds the company info
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
@@ -48,27 +44,16 @@ function EnrichedData({ data }) {
           </a>
         </div>
 
-        {/* Headquarters and Type */}
+        {/* Company Details */}
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-xl font-semibold mb-2">Company Details</h3>
           <p>
-            <span className="font-medium">Type:</span> {type}
-          </p>
-          <p>
             <span className="font-medium">Staff Count:</span> {staffCount}
-          </p>
-          <p>
-            <span className="font-medium">Founded:</span> {founded?.year}
-          </p>
-          <p>
-            <span className="font-medium">Headquarter:</span>{" "}
-            {headquarter?.line1}, {headquarter?.city},{" "}
-            {headquarter?.geographicArea}
           </p>
         </div>
       </div>
 
-      {/* Specialities and Industries */}
+      {/* Specialities */}
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-2">Specialities</h3>
         <div className="flex flex-wrap gap-2">
@@ -79,21 +64,6 @@ function EnrichedData({ data }) {
             >
               {speciality}
             </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Cover Image Carousel */}
-      <div className="mt-8">
-        <h3 className="text-xl font-semibold mb-2">Cover Images</h3>
-        <div className="flex overflow-x-scroll space-x-4">
-          {data.data.backgroundCoverImages?.map((image, index) => (
-            <img
-              key={index}
-              src={image.url}
-              alt="Cover"
-              className="h-40 rounded-lg shadow"
-            />
           ))}
         </div>
       </div>
