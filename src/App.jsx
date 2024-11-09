@@ -2,6 +2,7 @@ import { useState } from "react";
 import Login from "./components/Login";
 import LeadForm from "./components/LeadForm";
 import EnrichedData from "./components/EnrichedData";
+import Hero from "./components/Hero";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,6 +13,7 @@ function App() {
       <h1 className="text-4xl sm:top-7 border-b-4 px-1 rounded-md border-neutral-950 w-fit font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-lg text-center">
         LeadIntel
       </h1>
+      <Hero />
       {!user ? (
         <Login setUser={setUser} />
       ) : (
