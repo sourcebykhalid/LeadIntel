@@ -1,10 +1,7 @@
 import axios from "axios";
 
 // Get the base URL from the environment variable or fallback to localhost
-const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://backend-rouge-chi-65.vercel.app"
-    : "http://localhost:5000";
+const BASE_URL = "https://leadintel-server-sdk9.onrender.com";
 
 console.log(BASE_URL, "Baseurl");
 const getCompanyData = async (domain) => {
