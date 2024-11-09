@@ -2,8 +2,8 @@ import axios from "axios";
 
 // Get the base URL from the environment variable or fallback to localhost
 const BASE_URL =
-  import.meta.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
-
+  "https://teamintelbackend.vercel.app/" || "http://localhost:5000";
+console.log(BASE_URL, "Baseurl");
 const getCompanyData = async (domain) => {
   try {
     const response = await axios.get(`${BASE_URL}/api/company-data`, {
